@@ -1,0 +1,24 @@
+[project]
+name = "whitespace-quine"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "rzuckerm",email = "ron.zuckerman@adtran.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<4"
+dependencies = [
+    "whitespace-asm (>=1.0.1,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "whitespace_quine", from = "src"}]
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+pytest = "^8.3.5"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
