@@ -1,4 +1,4 @@
-[![Makefile CI](https://github.com/rzuckerm/whitespace-quine/actions/workflows/makefile.yaml/badge.svg)](https://github.com/rzuckerm/whitespace-quine/actions/workflows/makefile.yaml)
+[![Makefile CI](https://github.com/rzuckerm/whitespace-quine/actions/workflows/makefile.yml/badge.svg)](https://github.com/rzuckerm/whitespace-quine/actions/workflows/makefile.yml)
 # whitespace-quine
 
 Generate a Quine in Whitespace to the following files:
