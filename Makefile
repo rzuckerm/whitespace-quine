@@ -4,10 +4,12 @@ DOCKER_RUN := docker run -i$(INTERACTIVE) -v $(PWD):/local -w /local $(DOCKER_IM
 SRC := src/whitespace_quine/__init__.py
 META_GENERATE := .meta-generate
 QUINE_FILES := quine.ws*
+BLACK := poetry run black -l 100 .
 
 .PHONY: help
 help:
 	@echo "clean    - Clean generated files"
+	@echo "check	- Check formatting"
 	@echo "format   - Format code and tests"
 	@echo "generate - Generate quine assembly code and assembled program"
 	@echo "run      - Run the quine"
@@ -16,7 +18,11 @@ help:
 
 .PHONY: format
 format:
-	poetry run black -l 100 .
+	$(BLACK)
+
+.PHONY: check
+check:
+	$(BLACK) --check
 
 .PHONY: generate
 generate: $(META_GENERATE)
