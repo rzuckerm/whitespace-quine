@@ -20,11 +20,11 @@
     push    ' '
     outc
 
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ; Output rest of program (P) reversed and encoded in base 2,    ;
-    ; where:                                                        ;
-    ; - 0 = space                                                   ;
-    ; - 1 = tab                                                     ;
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ; Output rest of program (P) encoded in base 2, most-significant    ;
+    ; bit first, where:                                                 ;
+    ; - 0 = space                                                       ;
+    ; - 1 = tab                                                         ;
 
     ; Initialize divisor (D) = 1
     push    1       ; stack = P, D = 1
@@ -60,17 +60,18 @@ label 1
 label 00
     ; Clean up stack
     pop             ; stack = P
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
     ; Output end of PUSH instruction (newline)
     push    '\n'
     outc
 
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ; Output P encoded in base 3, where:                            ;
-    ; - 0 = space                                                   ;
-    ; - 1 = tab                                                     ;
-    ; - 2 = newline                                                 ;
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ; Output P encoded in base 3, least-significant value first,        ;
+    ; where:                                                            ;
+    ; - 0 = space                                                       ;
+    ; - 1 = tab                                                         ;
+    ; - 2 = newline                                                     ;
 
 label 01
     ; Do output mem[P % 3]
@@ -88,7 +89,7 @@ label 01
     jumpz   11      ; stack = P
                     ; If P == 0, exit
     jump    01      ; Otherwise, loop
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 label 11
     ; Clean up stack
