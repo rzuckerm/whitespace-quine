@@ -1,23 +1,23 @@
     ; Push rest of program (P)
-    push    4349179727516066176840066842404886627666515224349900727407832494582920644272672888833574151731464009939879236574181400398751641839575
-    ; mem[0] = ' '
+    push    33677979231883625366339880199817361448324292608720810793833615453798990824199845066086716622329279289043809935949178154863258
+    ; mem[0] = space
     push    0
     push    ' '
     store
-    ; mem[1] = '\t'
+    ; mem[1] = tab
     push    1
     push    '\t'
     store
-    ; mem[2] = '\n'
+    ; mem[2] = linefeed
     push    2
     push    '\n'
     store
     ; Output PUSH opcode (space, space) and sign bit (space)
     push    ' '
+    dup
+    dup
     outc
-    push    ' '
     outc
-    push    ' '
     outc
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -30,8 +30,8 @@
     push    1       ; stack = P, D = 1
 label 0
     ; Do D = D * 2
-    push    2       ; stack = P, D, 2
-    mult            ; stack = P, D = D * 2
+    dup             ; stack = P, D, D
+    add             ; stack = P, D, D = D * 2
     dup             ; stack = P, D, D
     copy    2       ; stack = P, D, D, P
     sub             ; stack = P, D, D - P
@@ -62,7 +62,7 @@ label 00
     pop             ; stack = P
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    ; Output end of PUSH instruction (newline)
+    ; Output end of PUSH instruction (linefeed)
     push    '\n'
     outc
 
@@ -71,7 +71,7 @@ label 00
     ; where:                                                            ;
     ; - 0 = space                                                       ;
     ; - 1 = tab                                                         ;
-    ; - 2 = newline                                                     ;
+    ; - 2 = linefeed                                                     ;
 
 label 01
     ; Do output mem[P % 3]
