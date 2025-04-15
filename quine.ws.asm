@@ -71,7 +71,7 @@ label 00
     ; where:                                                            ;
     ; - 0 = space                                                       ;
     ; - 1 = tab                                                         ;
-    ; - 2 = linefeed                                                     ;
+    ; - 2 = linefeed                                                    ;
 
 label 01
     ; Do output mem[P % 3]
